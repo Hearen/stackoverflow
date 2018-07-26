@@ -2,14 +2,20 @@ package string;
 
 public class WordReverse {
     public static void main(String... args) {
-        String s = "I have bananas\r" +
+        String s = " We have bananas\r" +
                 "He has apples\r"  +
                 "I own 3 cars\n"   +
                 "*!";
         System.out.println(reverseSentenceThenWord(s));
     }
 
+    /**
+     * return itself if the @param s is null or empty;
+     * @param s
+     * @return the words (non-whitespace character compound) reversed string;
+     */
     private static String reverseSentenceThenWord(String s) {
+        if (s == null || s.length() == 0) return s;
         char[] arr = s.toCharArray();
         int len = arr.length;
         reverse(arr, 0, len - 1);
@@ -28,7 +34,11 @@ public class WordReverse {
                 inWord = false;
             }
         }
-        return new String(arr);
+        if (inWord) reverse(arr, start, len - 1); // reverse the last word if it ends the sentence;
+        String ret = new String(arr);
+         ret = showWhiteSpaces(ret);
+        // uncomment the line above to present all whitespace escape characters;
+        return ret;
     }
 
     private static void reverse(char[] arr, int i, int j) {
@@ -44,4 +54,14 @@ public class WordReverse {
     private static boolean isSpace(char c) {
         return String.valueOf(c).matches("\\s");
     }
+
+    private static String showWhiteSpaces(String s) {
+        String[] hidden = {"\t", "\n", "\f", "\r"};
+        String[] show = {"\\\\t", "\\\\n", "\\\\f", "\\\\r"};
+        for (int i = hidden.length - 1; i >= 0; i--) {
+            s = s.replaceAll(hidden[i], show[i]);
+        }
+        return s;
+    }
 }
+
