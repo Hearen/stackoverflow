@@ -1,16 +1,44 @@
 package string;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javafx.util.Pair;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SplitString {
     public static void main(String... args) {
-        String[] myArr = {"Bob    Marley", "Barbara    Newton", "John    Smith"};
-        splitArray(myArr);
-        splitArrayUsingStream(myArr);
+        /**
+         * If you want the output as you provided, try this:
+
+         String s = "Apple Orange Mango Pineapple";
+         s = Stream.of(s.split("\\s")).collect(Collectors.joining("\n"));
+
+         Output:
+
+         Apple
+         Orange
+         Mango
+         Pineapple
+
+         But instead, if you wanna retain the `\n`, try this:
+
+         String s = "Apple Orange Mango Pineapple";
+         s = s.replaceAll("\\s", "\\\\n");
+
+         Output will be:
+
+         Apple\nOrange\nMango\nPineapple
+         */
+        String s = "Apple Orange Mango Pineapple";
+        s = s.replaceAll("\\s", "\\\\n");
+        System.out.println(s);
+        s = "Apple Orange Mango Pineapple";
+        s = Stream.of(s.split("\\s")).collect(Collectors.joining("\n"));
+        System.out.println(s);
+//        String[] myArr = {"Bob    Marley", "Barbara    Newton", "John    Smith"};
+//        splitArray(myArr);
+//        splitArrayUsingStream(myArr);
     }
 
     private static void splitArray(String[] arr) {
