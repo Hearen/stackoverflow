@@ -1,4 +1,4 @@
-package binarytree;
+package tree;
 
 public class PreorderChecker {
     public static void main(String... args) {
