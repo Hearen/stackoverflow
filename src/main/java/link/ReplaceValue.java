@@ -11,9 +11,5 @@ public class ReplaceValue {
             }
             p = p.next;
         }
-
-        for (Node p = first; p != null; p = p.next) {
-            if (p.val.equals(search)) { p.val = replace; }
-        }
     }
 }
