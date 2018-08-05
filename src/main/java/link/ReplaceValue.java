@@ -11,9 +11,5 @@ public class ReplaceValue {
             }
             p = p.next;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 501cd73edd10a9bc709e1bc7d669abf31501c580
     }
 }
