@@ -1,13 +1,13 @@
 package string;
 
-import org.junit.Test;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class RegexTest {
     public static void main(String... args) {
@@ -18,7 +18,17 @@ public class RegexTest {
         Pattern pattern = Pattern.compile(regex, flags);
         Matcher matcher = pattern.matcher(text);
         int matches = 0;
-        while (matcher.find()){
+        while (matcher.find()) {
+            matches++;
+        }
+        return matches;
+    }
+
+    public static int runTest(String regex, String text) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        int matches = 0;
+        while (matcher.find()) {
             matches++;
         }
         return matches;
@@ -41,14 +51,14 @@ public class RegexTest {
     @Test
     public void givenRegex_whenMatchesWithMultilineFlag_thenCorrect() {
         int matches = runTest("dog$", "This is a dog" + System.getProperty("line.separator")
-                        + "this is a fox", Pattern.MULTILINE);
+                + "this is a fox", Pattern.MULTILINE);
         assertTrue(matches > 0);
     }
 
     @Test
     public void givenRegex_whenMatchesWithEmbeddedMultilineFlag_thenCorrect() {
         int matches = runTest("(?m)dog$", "This is a dog" + System.getProperty("line.separator")
-                        + "this is a fox");
+                + "this is a fox");
         assertTrue(matches > 0);
     }
 
@@ -72,18 +82,8 @@ public class RegexTest {
     }
 
     @Test
-    public void givenNumberRange_whenMatchesAccurately_thenCorrect2(){
+    public void givenNumberRange_whenMatchesAccurately_thenCorrect2() {
         int matches = runTest("[30-35]", "Two Uppercase alphabets 34 overall");
         assertEquals(matches, 1);
-    }
-
-    public static int runTest(String regex, String text) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(text);
-        int matches = 0;
-        while (matcher.find()) {
-            matches++;
-        }
-        return matches;
     }
 }
