@@ -34,12 +34,12 @@ public class PeriodicTask {
                 System.out.println(LocalDateTime.now());
                 System.out.println("Hello world");
             }
-        }, getDelayTo(13, 0), TimeUnit.DAYS.toSeconds(1));
+        }, getDelayTo(13, 0), TimeUnit.HOURS.toSeconds(5));
     }
 
     public static void testScheduledExecutorService() {
         Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(() -> {
                     System.out.println("Hello World!");
-                }, getDelayTo(13, 0), TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
+                }, getDelayTo(13, 0), TimeUnit.HOURS.toSeconds(5), TimeUnit.SECONDS);
     }
 }
