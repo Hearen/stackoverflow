@@ -3,7 +3,7 @@ package io;
 import java.io.File;
 import java.io.IOException;
 
-public class OpenFile {
+public class OpenFileUsingProcessBuilder {
     public static void main(String... args) {
         String filePath = "t";
         openByCommand(filePath);
