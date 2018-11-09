@@ -1,4 +1,4 @@
-package jmx;
+package jmx.helloworld;
 
 
 import java.lang.management.ManagementFactory;

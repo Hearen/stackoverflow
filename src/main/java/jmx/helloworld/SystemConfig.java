@@ -1,4 +1,4 @@
-package jmx;
+package jmx.helloworld;
 
 public class SystemConfig implements SystemConfigMBean {
 
